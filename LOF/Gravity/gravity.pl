@@ -119,7 +119,7 @@ for(my $i=0;$i<$numPoints;$i++)
 		#print "$nnb->[1], $nnb->[0] \n";
 		my $index = $nnb->[1];
 		my $dist = sqrt($nnb->[0]);
-		$dist = 0.001 if $dist ==0;
+		$dist = 1 if $dist ==0;
 		$knn{$i}->{$index} = $dist; 	
 		$k_dist{$i}=$dist if $j==1;	# k distance of an object $query is the biggest k nn of $query.
 		#printf "$i kdist: $k_dist{$i} \n";

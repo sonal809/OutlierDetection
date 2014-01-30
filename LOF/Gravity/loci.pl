@@ -133,7 +133,7 @@ for(my $i=0;$i<$numPoints;$i++)
 my $eps =  10;
 my $alpha = 0.5;
 
-my $min_pt = 1;
+my $min_pt = 4;
 
 
 for(my $r=9;$r<$eps;$r++){

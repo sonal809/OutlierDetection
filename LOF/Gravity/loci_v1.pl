@@ -131,13 +131,13 @@ for(my $i=0;$i<$numPoints;$i++)
 }
 
 
-my $eps =  25;
+my $eps =  20;
 my $alpha = 0.5;
 
 my $min_pt = 1;
 
 
-for(my $r=24;$r<$eps;$r++){
+for(my $r=19;$r<$eps;$r++){
 
 #    for(my $a=1;$a<$eps;$a++){
 

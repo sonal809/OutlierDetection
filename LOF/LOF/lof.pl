@@ -119,6 +119,7 @@ for(my $i=0;$i<$numPoints;$i++)
 		print "$nnb->[1], $nnb->[0] \n";
 		my $index = $nnb->[1];
 		my $dist = sqrt($nnb->[0]);
+	#	$dist = 0.0001 if $dist==0;
 		$knn{$i}->{$index} = $dist; 	
 		$k_dist{$i}=$dist if $j==1;	# k distance of an object $query is the biggest k nn of $query.
 	}	
@@ -133,6 +134,7 @@ foreach my $point (keys %knn)
 	{
 		my $dist=$knn{$point}->{$neighbor};
 		$reach_dist{$point}->{$neighbor} = max($k_dist{$neighbor},$dist);
+		print " \n Reachability Distance for Point $knn{$point} with neighbor $neighbor is $reach_dist{$point}->{$neighbor}";
 	}
 }
 
@@ -146,6 +148,7 @@ foreach my $point (keys %reach_dist)
 		$total += $reach_dist{$point}->{$neighbor};
 	}
 	$lrd_p{$point}=$k/$total;
+	print "\n local reachability distance of point $point: $lrd_p{$point}"
 }
 
 # local outlier factor of an object p

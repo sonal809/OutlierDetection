@@ -107,6 +107,7 @@ my %k_dist;
 printf "searching k nearest neighbors...\n";
 for(my $i=0;$i<$numPoints;$i++)
 {
+    print "\nLooking at : $i";
 	my $neighbors = $kdTree->nearest($points[$i], $k);
 	#print join(", ", $neighbors);
 	#print "$neighbors";
@@ -114,14 +115,16 @@ for(my $i=0;$i<$numPoints;$i++)
 	
 	for(my $j=@$neighbors;$j>0;$j--)
 	{
-	    
+	        
 		my $nnb = pop @$neighbors;
-		print "$nnb->[1], $nnb->[0] \n";
+		#print "$nnb->[1], $nnb->[0] \n";
 		my $index = $nnb->[1];
 		my $dist = sqrt($nnb->[0]);
-		$dist = 0.01 if $dist==0;
+	        $dist = 0.1 if $dist==0;
 		$knn{$i}->{$index} = $dist; 	
-		$k_dist{$i}=$dist if $j==1;	# k distance of an object $query is the biggest k nn of $query.
+		print "\n[$j : $dist ]";
+	        $k_dist{$i}=$dist if $j==1;	# k distance of an object $query is the biggest k nn of $query.
+		
 	}	
 }
 
@@ -133,7 +136,9 @@ foreach my $point (keys %knn)
 	foreach my $neighbor (keys %{$knn{$point}})
 	{
 		my $dist=$knn{$point}->{$neighbor};
+
 		$reach_dist{$point}->{$neighbor} = max($k_dist{$neighbor},$dist);
+#		$reach_dist{$point}->{$neighbor} = $dist;
 	}
 }
 

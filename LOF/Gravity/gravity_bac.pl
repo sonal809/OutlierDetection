@@ -170,7 +170,7 @@ foreach my $point (keys %knn)
     print "\n  Sum :::: $neighbor_force_sum";    
     print "\n Force :::: $force{$point}";
 
-    $force_factor{$point}= ($force{$point}* $k ) /$neighbor_force_sum;
+    $force_factor{$point}= ($force{$point}* ($k -1) ) /$neighbor_force_sum;
 
     print "\n force factor:  $force_factor{$point}";   
 }
